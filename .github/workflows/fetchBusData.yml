@@ -22,3 +22,11 @@ jobs:
       - name: Crawling resources
         run: |
           python kmb.py
+      - name: Update data files
+        uses: test-room-7/action-update-file@v1
+        with:
+            file-path: |
+              routeList.kmb.json
+            commit-msg: Update resources
+            github-token: ${{ secrets.ACCESS_TOKEN }}
+            branch: main
