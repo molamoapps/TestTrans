@@ -27,6 +27,7 @@ def getRouteStop(co = 'kmb'):
     r = emitRequest('https://data.etabus.gov.hk/v1/transport/'+co+'/route/')
     #r = requests.get('https://data.etabus.gov.hk/v1/transport/'+co+'/route/')
     for route in r.json()['data']:
+        route['co'] = 'kmb'
         route['stops'] = {}
         routeList['+'.join([route['route'], route['service_type'], route['bound']])] = route
 
@@ -47,10 +48,6 @@ def getRouteStop(co = 'kmb'):
         for routeKey in routeList.keys():
             stops = [routeList[routeKey]['stops'][seq] for seq in sorted(routeList[routeKey]['stops'].keys())]
             routeList[routeKey]['stops'] = stops
-
-        # add additional properties
-        for routeKey in routeList.keys():
-            routeList[routeKey]['co'] = 'kmb'
 
         # flatten the routeList back to array
         routeList = [routeList[routeKey] for routeKey in routeList.keys() if not routeKey.startswith('K')]
