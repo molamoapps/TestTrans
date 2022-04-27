@@ -40,7 +40,6 @@ def getRouteStop(co = 'kmb'):
             # if route not found, clone it from service type = 1
             _routeKey = '+'.join([stop['route'], str('1'), stop['bound']])
             routeList[routeKey] = copy.deepcopy(routeList[_routeKey])
-            routeList[routeKey]['co'] = 'kmb'
             routeList[routeKey]['stops'] = {}
             routeList[routeKey]['stops'][int(stop['seq'])] = stop['stop']
 
@@ -48,6 +47,10 @@ def getRouteStop(co = 'kmb'):
         for routeKey in routeList.keys():
             stops = [routeList[routeKey]['stops'][seq] for seq in sorted(routeList[routeKey]['stops'].keys())]
             routeList[routeKey]['stops'] = stops
+
+        # add additional properties
+        for routeKey in routeList.keys():
+            routeList[routeKey]['co'] = 'kmb'
 
         # flatten the routeList back to array
         routeList = [routeList[routeKey] for routeKey in routeList.keys() if not routeKey.startswith('K')]
