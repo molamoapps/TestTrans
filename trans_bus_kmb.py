@@ -22,26 +22,28 @@ def getRouteStop(co = 'kmb'):
 
     # load route list and stop list if exist
     routeList = {}
+    if path.isfile(ROUTE_LIST):
+        return
+    else:
+        # load routes
+        r = emitRequest('https://data.etabus.gov.hk/v1/transport/'+co+'/route/')
+        #r = requests.get('https://data.etabus.gov.hk/v1/transport/'+co+'/route/')
+        for route in r.json()['data']:
+            route['stops'] = {}
+            routeList['+'.join([route['route'], route['service_type'], route['bound']])] = route
 
-    # load routes
-    r = emitRequest('https://data.etabus.gov.hk/v1/transport/'+co+'/route/')
-    #r = requests.get('https://data.etabus.gov.hk/v1/transport/'+co+'/route/')
-    for route in r.json()['data']:
-        route['stops'] = {}
-        routeList['+'.join([route['route'], route['service_type'], route['bound']])] = route
-
-    # load route stops
-    r = requests.get('https://data.etabus.gov.hk/v1/transport/'+co+'/route-stop/')
-    for stop in r.json()['data']:
-        routeKey = '+'.join([stop['route'], stop['service_type'], stop['bound']])
-        #if routeKey in routeList:
-        routeList[routeKey]['stops'][int(stop['seq'])] = stop['stop']
-        #else:
-            # if route not found, clone it from service type = 1
-            #_routeKey = '+'.join([stop['route'], str('1'), stop['bound']])
-            #routeList[routeKey] = copy.deepcopy(routeList[_routeKey])
-            #routeList[routeKey]['stops'] = {}
-            #routeList[routeKey]['stops'][int(stop['seq'])] = stop['stop']
+        # load route stops
+        r = requests.get('https://data.etabus.gov.hk/v1/transport/'+co+'/route-stop/')
+        for stop in r.json()['data']:
+            routeKey = '+'.join([stop['route'], stop['service_type'], stop['bound']])
+            if routeKey in routeList:
+                routeList[routeKey]['stops'][int(stop['seq'])] = stop['stop']
+            else:
+                # if route not found, clone it from service type = 1
+                _routeKey = '+'.join([stop['route'], str('1'), stop['bound']])
+                routeList[routeKey] = copy.deepcopy(routeList[_routeKey])
+                routeList[routeKey]['stops'] = {}
+                routeList[routeKey]['stops'][int(stop['seq'])] = stop['stop']
 
         # flatten the route stops back to array
         for routeKey in routeList.keys():
@@ -69,3 +71,4 @@ def getRouteStop(co = 'kmb'):
         f.write(json.dumps(stopList, ensure_ascii=False))
 
 getRouteStop()
+
