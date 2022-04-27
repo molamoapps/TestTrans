@@ -22,7 +22,8 @@ def getRouteStop(co = 'kmb'):
 
     # load route list and stop list if exist
     routeList = {}
-    if path.isfile(ROUTE_LIST):
+    #if path.isfile(ROUTE_LIST):
+    if false
         return
     else:
         # load routes
