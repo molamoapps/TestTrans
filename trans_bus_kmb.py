@@ -42,6 +42,7 @@ def getRouteStop(co = 'kmb'):
                 # if route not found, clone it from service type = 1
                 _routeKey = '+'.join([stop['route'], str('1'), stop['bound']])
                 routeList[routeKey] = copy.deepcopy(routeList[_routeKey])
+                routeList[routeKey]['co'] = 'kmb'
                 routeList[routeKey]['stops'] = {}
                 routeList[routeKey]['stops'][int(stop['seq'])] = stop['stop']
 
