@@ -26,7 +26,7 @@ jobs:
         uses: test-room-7/action-update-file@v1
         with:
             file-path: |
-              data/routeList.kmb.json
+              /data/routeList.kmb.json
             commit-msg: Update resources
             github-token: ${{ secrets.ACCESS_TOKEN }}
             branch: main
