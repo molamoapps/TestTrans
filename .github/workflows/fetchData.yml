@@ -27,6 +27,7 @@ jobs:
         with:
             file-path: |
               routeList.kmb.json
+              stopList.kmb.json
             
             commit-msg: Update resources
             github-token: ${{ secrets.ACCESS_TOKEN }}
