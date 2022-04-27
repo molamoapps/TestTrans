@@ -29,6 +29,7 @@ def getRouteStop(co = 'kmb'):
         r = emitRequest('https://data.etabus.gov.hk/v1/transport/'+co+'/route/')
         #r = requests.get('https://data.etabus.gov.hk/v1/transport/'+co+'/route/')
         for route in r.json()['data']:
+            route['co'] = 'kmb'
             route['stops'] = {}
             routeList['+'.join([route['route'], route['service_type'], route['bound']])] = route
 
