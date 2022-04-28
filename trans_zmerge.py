@@ -5,7 +5,8 @@ routeList = []
 stopList = {}
 stopMap = {}
 
-def getRouteObj ( route, co, stops, bound, orig, dest, seq, fares, faresHoliday, freq, jt, nlbId, gtfsId, serviceType = '1'):
+#def getRouteObj ( route, co, stops, bound, orig, dest, seq, fares, faresHoliday, freq, jt, nlbId, gtfsId, serviceType = '1'):
+def getRouteObj ( co, route, bound, serviceType = '1', stops, orig, dest):
   return {
     'co': co,
     'route': route,
@@ -14,8 +15,8 @@ def getRouteObj ( route, co, stops, bound, orig, dest, seq, fares, faresHoliday,
     'stops': stops,
     'orig': orig,
     'dest': dest,
-    'fares': fares,
-    'faresHoliday': faresHoliday,
+    #'fares': fares,
+    #'faresHoliday': faresHoliday,
     #'freq': freq,
     #'jt': jt,
     #'nlbId': nlbId,
