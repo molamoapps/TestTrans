@@ -6,7 +6,7 @@ stopList = {}
 stopMap = {}
 
 #def getRouteObj ( route, co, stops, bound, orig, dest, seq, fares, faresHoliday, freq, jt, nlbId, gtfsId, serviceType = '1'):
-def getRouteObj ( co, route, bound, serviceType = '1', stops, orig, dest):
+def getRouteObj ( co, route, bound, serviceType, stops, orig, dest):
   return {
     'co': co,
     'route': route,
@@ -54,9 +54,9 @@ def importRouteListJson( co ):
         getRouteObj(
             co = _route['co'],
             route = _route['route'],
-            bound = {co: _route['bound']},
+            bound = _route['bound'],
             serviceType = _route.get('service_type', '1'),
-            stops = [(co, _route['stops'])],
+            stops = _route['stops'],
             orig = orig,
             dest = dest
           #fares = _route.get('fares', None),
