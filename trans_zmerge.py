@@ -39,6 +39,34 @@ def importRouteListJson( co ):
         'lat': stop['lat'],
         'long': stop['long']
       }
+  for _route in _routeList:
+    orig = {'en': _route['orig_en'].replace('/', '／'),
+            'tc': _route['orig_tc'].replace('/', '／'),
+            'sc': _route['orig_sc'].replace('/', '／')
+            }
+            
+    dest = {'en': _route['dest_en'].replace('/', '／'),
+            'tc': _route['dest_tc'].replace('/', '／')
+            'sc': _route['dest_sc'].replace('/', '／')
+            }
+    routeList.append(
+        getRouteObj(
+            co = _route['co'],
+            route = _route['route'],
+            bound = {co: _route['bound']},
+            serviceType = _route.get('service_type', '1'),
+            stops = [(co, _route['stops'])],
+            orig = orig,
+            dest = dest
+          #fares = _route.get('fares', None),
+          #faresHoliday = _route.get('faresHoliday', None),
+          #freq = _route.get('freq', None),
+          #jt = _route.get('jt', None),
+          #nlbId = _route.get('id', None),
+          #gtfsId = _route.get('gtfsId', None),
+          #seq = len(_route['stops'])
+        )
+    )
   
   
 importRouteListJson('kmb')
