@@ -33,7 +33,7 @@ jobs:
               stopList.kmb.json
               stopList.ctb.json
               stopList.nwfb.json
-              
+              db.json
             commit-msg: Update resources
             github-token: ${{ secrets.ACCESS_TOKEN }}
             branch: main
