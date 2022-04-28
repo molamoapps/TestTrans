@@ -107,7 +107,7 @@ def getRouteStop(co):
                     'dest_tc': route['dest_tc'] if bound == 'outbound' else route['orig_tc'],
                     'dest_sc': route['dest_sc'] if bound == 'outbound' else route['orig_sc'],
                     'stops': route['stops'][bound],
-                    'serviceType': '0'
+                    'service_type': '0'
                 })
 
     with open(ROUTE_LIST, 'w') as f:
