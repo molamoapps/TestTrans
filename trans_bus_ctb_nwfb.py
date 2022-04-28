@@ -3,6 +3,7 @@ import json
 from os import path
 import asyncio
 import time
+import os
 
 def emitRequest(url):
   # retry if "Too many request (429)"
@@ -20,9 +21,14 @@ def getRouteStop(co):
     ROUTE_LIST = 'routeList.'+co+'.json'
     STOP_LIST = 'stopList.'+co+'.json'
 
+    #remove route list file if exist
+    if path.isfile(ROUTE_LIST):
+      os.remove(ROUTE_LIST)
+      
+    
     # load route list and stop list if exist
     routeList = {}
-    if path.isfile(ROUTE_LIST):
+    if False:
         return
     else:
         # load routes
