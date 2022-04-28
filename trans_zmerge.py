@@ -46,7 +46,7 @@ def importRouteListJson( co ):
             }
             
     dest = {'en': _route['dest_en'].replace('/', '／'),
-            'tc': _route['dest_tc'].replace('/', '／')
+            'tc': _route['dest_tc'].replace('/', '／'),
             'sc': _route['dest_sc'].replace('/', '／')
             }
     routeList.append(
