@@ -41,17 +41,17 @@ def importRouteListJson( co ):
       }
   
   
-  importRouteListJson('kmb')
+importRouteListJson('kmb')
   
-  def standardizeDict(d):
+def standardizeDict(d):
   return {key: value if not isinstance(value, dict) else standardizeDict(value) for key, value in sorted(d.items())}
 
-db = standardizeDict({
+db = {
   'routeList': routeList,
   'stopList': stopList
   #'stopMap': stopMap,
   #'holidays': holidays
-})
+}
 
 with open( 'db.json', 'w' ) as f:
   f.write(json.dumps(db, ensure_ascii=False, separators=(',', ':')))
