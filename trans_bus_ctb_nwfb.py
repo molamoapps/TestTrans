@@ -24,7 +24,8 @@ def getRouteStop(co):
     #remove route list file if exist
     if path.isfile(ROUTE_LIST):
       os.remove(ROUTE_LIST)
-      
+    if path.isfile(STOP_LIST):
+      os.remove(STOP_LIST)  
     
     # load route list and stop list if exist
     routeList = {}
@@ -37,9 +38,9 @@ def getRouteStop(co):
 
     _stops = []
     stopList = {}
-    if path.isfile(STOP_LIST):
-        with open(STOP_LIST) as f:
-            stopList = json.load(f)
+    #if path.isfile(STOP_LIST):
+    #    with open(STOP_LIST) as f:
+    #        stopList = json.load(f)
    
     # function to load single stop info
     def getStop ( stopId ):
