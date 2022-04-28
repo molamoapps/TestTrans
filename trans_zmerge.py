@@ -42,9 +42,8 @@ def importRouteListJson( co ):
   
   
 importRouteListJson('kmb')
-  
-def standardizeDict(d):
-  return {key: value if not isinstance(value, dict) else standardizeDict(value) for key, value in sorted(d.items())}
+importRouteListJson('ctb')
+importRouteListJson('nwfb')
 
 db = {
   'routeList': routeList,
