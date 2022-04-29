@@ -22,7 +22,7 @@ jobs:
           pip install -r requirements.txt
       - name: Fetch data
         run: |
-          python trans_parse_journeytime.py
+          python trans_parse_gtfs.py
           
       - name: Update data files
         uses: test-room-7/action-update-file@v1
@@ -35,6 +35,7 @@ jobs:
               stopList.ctb.json
               stopList.nwfb.json
               routeTime.json
+              gtfs.json
               db.json
               
             commit-msg: Update resources
