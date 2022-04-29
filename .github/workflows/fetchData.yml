@@ -23,7 +23,7 @@ jobs:
       - name: Fetch data
         run: |
           python trans_zmerge.py
-          
+          python trans_parse_gtfs.py
       - name: Update data files
         uses: test-room-7/action-update-file@v1
         with:
@@ -34,7 +34,9 @@ jobs:
               stopList.kmb.json
               stopList.ctb.json
               stopList.nwfb.json
+              gtfs.json
               db.json
+              
             commit-msg: Update resources
             github-token: ${{ secrets.ACCESS_TOKEN }}
             branch: main
