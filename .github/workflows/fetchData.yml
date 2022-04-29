@@ -2,7 +2,7 @@ name: Fetching Data
 on:
   push:
   schedule:
-    - cron: "00 05 * * *"
+    - cron: "00 18 * * *"
 jobs:
   Fetch-Bus-Data:
     runs-on: ubuntu-latest
