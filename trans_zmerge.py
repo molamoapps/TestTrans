@@ -66,8 +66,8 @@ def importRouteListJson( co ):
           #nlbId = _route.get('id', None),
           #gtfsId = _route.get('gtfsId', None),
           #seq = len(_route['stops'])
-        )
     )
+    
   
   
 importRouteListJson('kmb')
