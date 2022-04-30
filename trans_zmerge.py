@@ -41,6 +41,7 @@ def importRouteListJson( co ):
         'long': stop['long']
       }
   for _route in _routeList:
+    routeID = ('%s+%s+%s+%s'%(_route['co'], _route['route'], _route['bound'], _route.get('service_type', '1')))
     orig = {'en': _route['orig_en'].replace('/', '／'),
             'tc': _route['orig_tc'].replace('/', '／'),
             'sc': _route['orig_sc'].replace('/', '／')
@@ -50,7 +51,7 @@ def importRouteListJson( co ):
             'tc': _route['dest_tc'].replace('/', '／'),
             'sc': _route['dest_sc'].replace('/', '／')
             }
-    routeList.append(
+    routeList[routeID] =
         getRouteObj(
             co = _route['co'],
             route = _route['route'],
