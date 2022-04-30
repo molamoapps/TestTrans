@@ -1,7 +1,7 @@
 import json
 from haversine import haversine, Unit
 
-routeList = []
+routeList = {}
 stopList = {}
 stopMap = {}
 
