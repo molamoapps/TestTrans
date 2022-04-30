@@ -51,8 +51,7 @@ def importRouteListJson( co ):
             'tc': _route['dest_tc'].replace('/', '／'),
             'sc': _route['dest_sc'].replace('/', '／')
             }
-    routeList[routeID] =
-        getRouteObj(
+    routeList[routeID] = getRouteObj(
             co = _route['co'],
             route = _route['route'],
             bound = _route['bound'],
