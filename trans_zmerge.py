@@ -76,7 +76,7 @@ def importRouteListJson( co ):
   
   
 importRouteListJson('kmb')
-importRouteListJson('ctb')
+importRouteListJson('ctb') 
 importRouteListJson('nwfb')
 
 db = {
