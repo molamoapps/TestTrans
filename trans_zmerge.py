@@ -71,8 +71,8 @@ def importRouteListJson( co ):
   
   
 importRouteListJson('kmb')
-importRouteListJson('ctb')
-#importRouteListJson('nwfb')
+#importRouteListJson('ctb')
+importRouteListJson('nwfb')
 
 db = {
   'routeList': routeList,
