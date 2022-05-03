@@ -33,7 +33,8 @@ def importRouteListJson( co ):
       stopList[stopId] = {
         'stop': stopId,
         'name': {
-          'en': stop['name_en'],
+          #'en': stop['name_en'],
+          'en': stop.get('name_en', "en NA"),
           'tc': stop['name_tc'],
           'sc': stop['name_sc']
         },
