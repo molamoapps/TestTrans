@@ -25,7 +25,7 @@ def getRouteStop(co = 'gmb'):
       os.remove(ROUTE_LIST)
     
     # load route list and stop list if exist
-    routeList = {}
+    routeList = []
     stops = {}
     
     for region in ['HKI', 'KLN', 'NT']:
