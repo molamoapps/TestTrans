@@ -26,7 +26,7 @@ def getRouteStop(co = 'gmb'):
     
     # load route list and stop list if exist
     routeList = {}
-    stopList = {}
+    stops = {}
     
     for region in ['HKI', 'KLN', 'NT']:
       r = emitRequest('https://data.etagmb.gov.hk/route/'+region)
@@ -68,6 +68,6 @@ def getRouteStop(co = 'gmb'):
     with open(ROUTE_LIST, 'w') as f:
         f.write(json.dumps(routeList, ensure_ascii=False))
     with open(STOP_LIST, 'w') as f:
-        f.write(json.dumps(stopList, ensure_ascii=False))
+        f.write(json.dumps(stops, ensure_ascii=False))
 
 getRouteStop()
