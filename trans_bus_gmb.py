@@ -66,6 +66,11 @@ def getRouteStop(co = 'gmb'):
             #if route["description_tc"] != '正常班次':
             #  service_type += 1
     
+    for stop_id in stops.keys():
+      r = emitRequest('https://data.etagmb.gov.hk/stop/'+str(stop_id))
+      stops[stop_id]['lat'] = r.json()['data']['coordinates']['wgs84']['latitude']
+      stops[stop_id]['long'] = r.json()['data']['coordinates']['wgs84']['longitude']
+    
     with open(ROUTE_LIST, 'w') as f:
         f.write(json.dumps(routeList, ensure_ascii=False))
     with open(STOP_LIST, 'w') as f:
