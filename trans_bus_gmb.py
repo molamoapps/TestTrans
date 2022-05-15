@@ -45,9 +45,10 @@ def getRouteStop(co = 'gmb'):
                   "stop": str(stop_id),
                   "name_en": stop['name_en'],
                   "name_tc": stop['name_tc'],
+                  "name_sc": stop['name_sc'],
                 }
             routeList.append({
-              "co": 'gmb'
+              "co": co,
               "route_id": str(route['route_id']),
               "route": route_no,
               "orig_tc": direction['orig_tc'],
