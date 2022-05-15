@@ -47,7 +47,8 @@ def getRouteStop(co = 'gmb'):
                   "name_tc": stop['name_tc'],
                 }
             routeList.append({
-              "gtfsId": str(route['route_id']),
+              "co": 'gmb'
+              "route_id": str(route['route_id']),
               "route": route_no,
               "orig_tc": direction['orig_tc'],
               "orig_sc": direction['orig_sc'],
@@ -56,7 +57,7 @@ def getRouteStop(co = 'gmb'):
               "dest_sc": direction['dest_sc'],
               "dest_en": direction['dest_en'],
               "bound": 'O' if direction['route_seq'] == 1 else 'I',
-              "service_type": 1 if route["description_tc"] == '正常班次' else service_type,
+              "service_type": '1' if route["description_tc"] == '正常班次' else str(service_type),
               "stops": [str(stop['stop_id']) for stop in rs.json()['data']['route_stops']]
               #"freq": getFreq(direction['headways'])
             })
