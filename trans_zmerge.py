@@ -43,8 +43,8 @@ def importRouteListJson( co ):
         },
         #'lat': stop['lat'],
         #'long': stop['long']
-        'lat': stop.get('lat', "lat NA"),
-        'long': stop.get('long', "long NA")
+        'lat': str(stop.get('lat', "lat NA")),
+        'long': str(stop.get('long', "long NA"))
       }
   for _route in _routeList:
     routeID = ('%s%s%s%s'%(_route['co'], _route['route'], _route['bound'], _route.get('service_type', '1')))
