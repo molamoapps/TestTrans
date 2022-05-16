@@ -59,7 +59,8 @@ def importRouteListJson( co ):
             }
     routeList[routeID] = getRouteObj(
             co = _route['co'],
-            route_id = _route['route'] if _route['co'] == 'gmb' else "",
+            #route_id = _route['route_id'] if _route['co'] == 'gmb' else "",
+            route_id = _route.get('route_id', ''),
             route = _route['route'],
             bound = _route['bound'],
             serviceType = _route.get('service_type', '1'),
