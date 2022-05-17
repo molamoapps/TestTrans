@@ -82,6 +82,7 @@ importRouteListJson('kmb')
 importRouteListJson('ctb') 
 importRouteListJson('nwfb')
 importRouteListJson('gmb')
+importRouteListJson('nlb')
 
 db = {
   'routeList': routeList,
