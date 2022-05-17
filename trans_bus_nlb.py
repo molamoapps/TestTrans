@@ -34,7 +34,7 @@ def getRouteStop(co):
         for route in r.json()['routes']:
             routeList.append({
                 "co": co,
-                "id": route['routeId'],
+                "route_id": route['routeId'],
                 "route": route['routeNo'],
                 "bound": "O",
                 "service_type": str(1 + route['overnightRoute'] * 2 + route['specialRoute'] * 4),
