@@ -22,9 +22,13 @@ def getRouteStop(co):
     ROUTE_LIST = 'routeList.'+co+'.json'
     STOP_LIST = 'stopList.'+co+'.json'
 
+    if path.isfile(ROUTE_LIST):
+      os.remove(ROUTE_LIST)
+
     # load route list and stop list if exist
     routeList = {}
-    if path.isfile(ROUTE_LIST):
+    
+    if False:
         return
     else:
         # load routes
