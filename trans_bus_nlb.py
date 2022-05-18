@@ -3,6 +3,7 @@ import requests
 import json
 from os import path
 import asyncio
+import os
 import time
 
 def emitRequest(url):
