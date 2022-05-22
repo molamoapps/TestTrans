@@ -71,6 +71,18 @@ def getRouteStop(co = 'gmb'):
       stops[stop_id]['lat'] = r.json()['data']['coordinates']['wgs84']['latitude']
       stops[stop_id]['long'] = r.json()['data']['coordinates']['wgs84']['longitude']
     
+    #loop stoplist to get contained routes
+    for key, stopMod in stops.items():
+        tmpContainRoute = []
+        for routeMod in routeList:
+            if stopMod['stop'] in routeMod['stops']:
+                tmpSeq = routeMod['stops'].index(stopMod['stop'])
+                tmpRoute = {}
+                tmpRoute['ID'] = ('%s%s%s%s%s'%(routeMod['co'], routeMod['route_id'],  routeMod['route'], routeMod['bound'], routeMod.get('service_type', '1')))
+                tmpRoute['i'] = tmpSeq
+                tmpContainRoute.append(tmpRoute)
+        stopMod['routes'] = tmpContainRoute
+    
     with open(ROUTE_LIST, 'w') as f:
         f.write(json.dumps(routeList, ensure_ascii=False))
     with open(STOP_LIST, 'w') as f:
