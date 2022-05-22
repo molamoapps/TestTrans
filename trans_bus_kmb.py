@@ -76,6 +76,17 @@ def getRouteStop(co = 'kmb'):
         for stop in _stopList:
             stopList[stop['stop']] = stop
    
+  
+   #loop stoplist to get contained routes
+   for key, stopMod in stopList.items():
+        tmpContainRoute = []
+        for routeMod in routeList:
+            if stopMod['stop'] in routeMod['stops']:
+                #tmpRoute['route'] = routeMod['route']
+                tmpContainRoute.append(routeMod['route'])
+        stopMod['routes'] = tmpContainRoute
+  
+  
     with open(ROUTE_LIST, 'w') as f:
         f.write(json.dumps(routeList, ensure_ascii=False))
     with open(STOP_LIST, 'w') as f:
