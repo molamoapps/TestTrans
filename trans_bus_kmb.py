@@ -77,8 +77,8 @@ def getRouteStop(co = 'kmb'):
             stopList[stop['stop']] = stop
    
   
-   #loop stoplist to get contained routes
-   for key, stopMod in stopList.items():
+    #loop stoplist to get contained routes
+    for key, stopMod in stopList.items():
         tmpContainRoute = []
         for routeMod in routeList:
             if stopMod['stop'] in routeMod['stops']:
