@@ -28,7 +28,7 @@ routes = [route for route in reader if len(route) == 7]
 for [route, bound, stopCode, stopId, chn, eng, seq] in routes:
   if route+"_"+bound not in routeList:
     routeList[route+"_"+bound] = {
-      "co": co,
+      "co": "lr",
       "route_id": "",
       "route": route,
       "bound": "O" if bound == "1" else "I",
