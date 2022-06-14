@@ -59,7 +59,7 @@ for [route, bound, stopCode, stopId, chn, eng, seq] in routes:
       "name_tc": chn,
       "name_sc": chn,
       "lat": lat,
-      "long": lng
+      "long": lng,
       "routes": []
     }
     
