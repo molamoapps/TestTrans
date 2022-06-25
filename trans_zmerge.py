@@ -84,6 +84,7 @@ importRouteListJson('ctb')
 importRouteListJson('nwfb')
 importRouteListJson('gmb')
 importRouteListJson('nlb')
+importRouteListJson('lr')
 
 db = {
   'routeList': routeList,
