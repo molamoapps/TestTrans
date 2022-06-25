@@ -63,17 +63,19 @@ for [route, bound, stopCode, stopId, chn, eng, seq] in routes:
       "routes": []
     }
 
+    
 #loop stoplist to get contained routes
 for key, stopMod in stopList.items():
-    tmpContainRoute = []
-    for routeMod in routeList:
-        if stopMod['stop'] in routeMod['stops']:
-            tmpSeq = routeMod['stops'].index(stopMod['stop'])
-            tmpRoute = {}
-            tmpRoute['ID'] = ('%s%s%s%s%s'%(routeMod['co'], routeMod['route_id'],  routeMod['route'], routeMod['bound'], routeMod.get('service_type', '1')))
-            tmpRoute['i'] = tmpSeq
-            tmpContainRoute.append(tmpRoute)
-    stopMod['routes'] = tmpContainRoute
+  tmpContainRoute = []
+  for routeMod in routeList:
+    if stopMod['stop'] in routeMod['stops']:
+      tmpSeq = routeMod['stops'].index(stopMod['stop'])
+      tmpRoute = {}
+      tmpRoute['ID'] = ('%s%s%s%s%s'%(routeMod['co'], routeMod['route_id'],  routeMod['route'], routeMod['bound'], routeMod.get('service_type', '1')))
+      tmpRoute['i'] = tmpSeq
+      tmpContainRoute.append(tmpRoute)
+  stopMod['routes'] = tmpContainRoute
+    
     
 
 with open('routeList.lr.json', 'w') as f:
