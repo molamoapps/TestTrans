@@ -62,12 +62,23 @@ for [route, bound, stopCode, stopId, chn, eng, seq] in routes:
       "long": lng,
       "routes": []
     }
-    
+
+#loop stoplist to get contained routes
+for key, stopMod in stopList.items():
+    tmpContainRoute = []
+    for routeMod in routeList:
+        if stopMod['stop'] in routeMod['stops']:
+            tmpSeq = routeMod['stops'].index(stopMod['stop'])
+            tmpRoute = {}
+            tmpRoute['ID'] = ('%s%s%s%s%s'%(routeMod['co'], routeMod['route_id'],  routeMod['route'], routeMod['bound'], routeMod.get('service_type', '1')))
+            tmpRoute['i'] = tmpSeq
+            tmpContainRoute.append(tmpRoute)
+    stopMod['routes'] = tmpContainRoute
     
 
-with open('routeList.lightrail.json', 'w') as f:
+with open('routeList.lr.json', 'w') as f:
   f.write(json.dumps([route for route in routeList.values() if len(route['stops']) > 0], ensure_ascii=False))
-with open('stopList.lightrail.json', 'w') as f:
+with open('stopList.lr.json', 'w') as f:
   f.write(json.dumps(stopList, ensure_ascii=False))
 
  
