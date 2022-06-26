@@ -75,6 +75,9 @@ def getRouteStop(co = 'lr'):
           "routes": []
         }
         
+    # flatten the routeList back to array
+    routeList = [routeList[routeKey] for routeKey, route in routeList.items() if len(route['stops']) > 0]
+    
     print(routeList)    
     #loop stoplist to get contained routes
     for key, stopMod in stopList.items():
