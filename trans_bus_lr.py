@@ -58,10 +58,10 @@ def getRouteStop(co = 'lr'):
         routeList[route+"_"+bound]["orig_tc"] = chn
         routeList[route+"_"+bound]["orig_en"] = eng
         routeList[route+"_"+bound]["orig_sc"] = chn
-        routeList[route+"_"+bound]["dest_tc"] = chn
-        routeList[route+"_"+bound]["dest_en"] = eng
-        routeList[route+"_"+bound]["dest_sc"] = chn
-        routeList[route+"_"+bound]["stops"].append("LR"+stopId)
+      routeList[route+"_"+bound]["dest_tc"] = chn
+      routeList[route+"_"+bound]["dest_en"] = eng
+      routeList[route+"_"+bound]["dest_sc"] = chn
+      routeList[route+"_"+bound]["stops"].append("LR"+stopId)
       if "LR"+stopId not in stopList:
         r = requests.get('https://geodata.gov.hk/gs/api/v1.0.0/locationSearch?q=輕鐵－'+chn, headers={'Accept': 'application/json'})
         lat, lng = epsgTransformer.transform( r.json()[0]['y'], r.json()[0]['x'] )
