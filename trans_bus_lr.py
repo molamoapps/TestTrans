@@ -75,12 +75,12 @@ def getRouteStop(co = 'lr'):
           "routes": []
         }
         
+    print(routeList)    
     #loop stoplist to get contained routes
     for key, stopMod in stopList.items():
       tmpContainRoute = []
       for routeMod in routeList:
           print(stopMod['stop'])
-          print(routeMod['stops'])
       #  if stopMod['stop'] in routeMod['stops']:
       #    tmpSeq = routeMod['stops'].index(stopMod['stop'])
       #    tmpRoute = {}
