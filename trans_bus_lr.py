@@ -3,7 +3,7 @@ import requests
 import json
 from pyproj import Transformer
 import time
-import path
+from os import path
 
 def emitRequest(url):
   # retry if "Too many request (429)"
