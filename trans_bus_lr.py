@@ -80,6 +80,7 @@ def getRouteStop(co = 'lr'):
       tmpContainRoute = []
       for routeMod in routeList:
           print(stopMod['stop'])
+          print(routeMod['stops'])
       #  if stopMod['stop'] in routeMod['stops']:
       #    tmpSeq = routeMod['stops'].index(stopMod['stop'])
       #    tmpRoute = {}
