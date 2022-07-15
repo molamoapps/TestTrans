@@ -22,8 +22,7 @@ jobs:
           pip install -r requirements.txt
       - name: Fetch data
         run: |
-          python trans_bus_lr.py
-          python trans_zmerge.py
+          python trans_parse_gtfs_match.py
           
       - name: Update data files
         uses: test-room-7/action-update-file@v1
@@ -43,6 +42,7 @@ jobs:
               stopList.lr.json
               routeTime.json
               gtfs.json
+              routeFareList.kmb.json
               db.json
               
             commit-msg: Update resources
