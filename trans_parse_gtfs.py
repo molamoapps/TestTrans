@@ -83,7 +83,7 @@ with open('gtfs/fare_attributes.txt') as csvfile:
     [route_id, bound, on, off] = fare_id.split('-')
     if bound not in routeList[route_id]['fares']:
       routeList[route_id]['fares'][bound] = {}
-    if on not in routeList[route_id]['fares'][bound] or routeList[route_id]['fares'][bound][on][1] < int(off):
+    if on not in routeList[route_id]['fares'][bound]:
       routeList[route_id]['fares'][bound][on] = ('0' if price == '0.0000' else price)
 
 '''
