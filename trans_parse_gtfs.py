@@ -21,27 +21,30 @@ with open('gtfs/routes.txt') as csvfile:
   reader = csv.reader(csvfile)
   headers = next(reader, None)
   for [route_id, agency_id, route_short_name, route_long_name, route_type, route_url] in reader:
-    routeList[route_id] = {
+    routeList[route_id] = { 
       'co': agency_id.replace('LWB', 'KMB').lower().split('+'),
       'route': route_short_name,
-      'stops': {},
+#       'stops': {},
       'fares': {},
       'freq': {},
-      'orig': {
-        'zh': '',
-        'en': route_long_name.split(' - ')[0]
-      },
-      'dest': {
-        'zh': '',
-        'en': route_long_name.split(' - ')[1].replace(' (CIRCULAR)', '')
-      },
+#      'orig': {
+#        'zh': '',
+#        'en': route_long_name.split(' - ')[0]
+#      },
+#      'dest': {
+#        'zh': '',
+#        'en': route_long_name.split(' - ')[1].replace(' (CIRCULAR)', '')
+#      },
       'jt': routeJourneyTime[route_id]["journeyTime"] if route_id in routeJourneyTime else None
     }
-  
+
+'''
 def takeFirst(elem):
   return int(elem[0])
+'''
 
 # parse timetable
+'''
 with open('gtfs/trips.txt') as csvfile:
   reader = csv.reader(csvfile)
   headers = next(reader, None)
@@ -70,6 +73,7 @@ with open('gtfs/stop_times.txt') as csvfile:
     if bound not in routeList[route_id]['stops']:
       routeList[route_id]['stops'][bound] = {}
     routeList[route_id]['stops'][bound][stop_sequence] = stop_id
+'''
 
 # parse fares
 with open('gtfs/fare_attributes.txt') as csvfile:
@@ -92,6 +96,7 @@ for route_id  in routeList.keys():
     _tmp.sort(key=takeFirst)
     routeList[route_id]['fares'][bound] = [v[0] for k,v in _tmp]
 
+'''
 import re
 nameReg = re.compile('\[(.*)\] (.*)')
 def parseStopName(name):
@@ -114,8 +119,9 @@ with open('gtfs/stops.txt') as csvfile:
       'lat': float(stop_lat),
       'lng': float(stop_lon)
     }
+'''
 
-import json
+
 with open('gtfs.json', 'w') as f:
   f.write(json.dumps({
     'routeList': routeList,
