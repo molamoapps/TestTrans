@@ -86,6 +86,7 @@ with open('gtfs/fare_attributes.txt') as csvfile:
     if on not in routeList[route_id]['fares'][bound] or routeList[route_id]['fares'][bound][on][1] < int(off):
       routeList[route_id]['fares'][bound][on] = ('0' if price == '0.0000' else price, int(off))
 
+'''
 for route_id  in routeList.keys():
   for bound in routeList[route_id]['stops'].keys():
     _tmp = list(routeList[route_id]['stops'][bound].items())
@@ -96,7 +97,7 @@ for route_id  in routeList.keys():
     _tmp.sort(key=takeFirst)
     routeList[route_id]['fares'][bound] = [v[0] for k,v in _tmp]
 
-'''
+
 import re
 nameReg = re.compile('\[(.*)\] (.*)')
 def parseStopName(name):
