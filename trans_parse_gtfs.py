@@ -28,14 +28,14 @@ with open('gtfs/routes.txt') as csvfile:
       'stops': {},
       'fares': {},
       'freq': {},
-#      'orig': {
-#        'zh': '',
-#        'en': route_long_name.split(' - ')[0]
-#      },
-#      'dest': {
-#        'zh': '',
-#        'en': route_long_name.split(' - ')[1].replace(' (CIRCULAR)', '')
-#      },
+      'orig': {
+        'zh': '',
+        'en': route_long_name.split(' - ')[0]
+      },
+      'dest': {
+        'zh': '',
+        'en': route_long_name.split(' - ')[1].replace(' (CIRCULAR)', '')
+      },
       'jt': routeJourneyTime[route_id]["journeyTime"] if route_id in routeJourneyTime else None
     }
 
@@ -99,7 +99,7 @@ for route_id  in routeList.keys():
     _tmp = list(routeList[route_id]['fares'][bound].items())
     _tmp.sort(key=takeFirst)
     routeList[route_id]['fares'][bound] = [v[0] for k,v in _tmp]
-'''
+
 
 import re
 nameReg = re.compile('\[(.*)\] (.*)')
@@ -123,7 +123,7 @@ with open('gtfs/stops.txt') as csvfile:
       'lat': float(stop_lat),
       'lng': float(stop_lon)
     }
-'''
+
 
 
 #loop over routeList to change the key
