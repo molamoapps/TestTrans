@@ -14,6 +14,7 @@ with zipfile.ZipFile("gtfs.zip","r") as zip_ref:
   zip_ref.extractall("gtfs")
 
 routeList = {}
+routeListFinal = {}
 stopList = {}
 routeJourneyTime = json.load(open('routeTime.json'))
 
@@ -123,8 +124,15 @@ with open('gtfs/stops.txt') as csvfile:
 '''
 
 
+#loop over routeList to change the key
+for key, routeMod in routeList.items():
+    for routeMod_co in routeMod.co.items()
+        routeID = ('%s%s'%(routeMod_co, routeMod['route']))
+        routeListFinal[routeID] = routeMod
+
+
 with open('gtfs.json', 'w') as f:
   f.write(json.dumps({
-    'routeList': routeList,
+    'routeList': routeListFinal,
     'stopList': stopList
   }, ensure_ascii=False, indent=2))
