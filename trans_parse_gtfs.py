@@ -25,7 +25,7 @@ with open('gtfs/routes.txt') as csvfile:
     routeList[route_id] = { 
       'co': agency_id.replace('LWB', 'KMB').lower().split('+'),
       'route': route_short_name,
-#      'stops': {},
+      'stops': {},
       'fares': {},
       'freq': {},
 #      'orig': {
@@ -45,7 +45,6 @@ def takeFirst(elem):
 
 
 # parse timetable
-'''
 with open('gtfs/trips.txt') as csvfile:
   reader = csv.reader(csvfile)
   headers = next(reader, None)
@@ -65,6 +64,7 @@ with open('gtfs/frequencies.txt') as csvfile:
     [route_id, bound, calendar, start_time] = trip_id.split('-')
     routeList[route_id]['freq'][bound][calendar][start_time] = (end_time[0:5].replace(':', ''), headway_secs)
 
+
 # parse stop seq
 with open('gtfs/stop_times.txt') as csvfile:
   reader = csv.reader(csvfile)
@@ -74,7 +74,7 @@ with open('gtfs/stop_times.txt') as csvfile:
     if bound not in routeList[route_id]['stops']:
       routeList[route_id]['stops'][bound] = {}
     routeList[route_id]['stops'][bound][stop_sequence] = stop_id
-'''
+
 
 # parse fares
 with open('gtfs/fare_attributes.txt') as csvfile:
@@ -91,10 +91,10 @@ with open('gtfs/fare_attributes.txt') as csvfile:
 
 
 for route_id  in routeList.keys():
-#  for bound in routeList[route_id]['stops'].keys():
-#    _tmp = list(routeList[route_id]['stops'][bound].items())
-#    _tmp.sort(key=takeFirst)
-#    routeList[route_id]['stops'][bound] = [v for k,v in _tmp]
+  for bound in routeList[route_id]['stops'].keys():
+    _tmp = list(routeList[route_id]['stops'][bound].items())
+    _tmp.sort(key=takeFirst)
+    routeList[route_id]['stops'][bound] = [v for k,v in _tmp]
   for bound in routeList[route_id]['fares'].keys():
     _tmp = list(routeList[route_id]['fares'][bound].items())
     _tmp.sort(key=takeFirst)
