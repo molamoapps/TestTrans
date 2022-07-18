@@ -132,7 +132,7 @@ for key, routeMod in routeList.items():
         if len(routeMod['fares']) == 2:
             routeID = ('%s%s'%(routeMod_co, routeMod['route']))
         else:
-            routeID = ('%s%s%s'%(routeMod_co, routeMod['route'], str(len(routeMod['fares']['1'])))
+            routeID = ('%s%s%s'%(routeMod_co, routeMod['route'], str(len(routeMod['fares']['1']))))
         routeListFinal[routeID] = routeMod
 
 
