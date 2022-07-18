@@ -92,8 +92,8 @@ gtfs = json.load(open('gtfs.json'))
 
 db = {
   'routeList': routeList,
-  'stopList': stopList
-  'gtfsRouteList': gtfs['gtfsRouteList'],
+  'stopList': stopList,
+  'gtfsRouteList': gtfs['gtfsRouteList']
   #'holidays': holidays
 }
 
