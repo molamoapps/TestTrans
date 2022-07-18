@@ -129,7 +129,10 @@ with open('gtfs/stops.txt') as csvfile:
 #loop over routeList to change the key
 for key, routeMod in routeList.items():
     for routeMod_co in routeMod['co']:
-        routeID = ('%s%s'%(routeMod_co, routeMod['route']))
+        if len(routeMod['fares']) == 2:
+            routeID = ('%s%s'%(routeMod_co, routeMod['route']))
+        else:
+            routeID = ('%s%s%s'%(routeMod_co, routeMod['route'], str(len(routeMod['fares']['1'])))
         routeListFinal[routeID] = routeMod
 
 
