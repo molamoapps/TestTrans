@@ -138,6 +138,6 @@ for key, routeMod in routeList.items():
 
 with open('gtfs.json', 'w') as f:
   f.write(json.dumps({
-    'routeList': routeList,
+    'routeList': routeListFinal,
     'stopList': stopList
   }, ensure_ascii=False, indent=2))
