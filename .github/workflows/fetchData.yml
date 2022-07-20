@@ -22,7 +22,7 @@ jobs:
           pip install -r requirements.txt
       - name: Fetch data
         run: |
-          python trans_zmerge.py
+          python trans_bus_lrtfeeder.py
           
           
       - name: Update data files
@@ -35,12 +35,14 @@ jobs:
               routeList.gmb.json
               routeList.nlb.json
               routeList.lr.json
+              routeList.lrtfeeder.json
               stopList.kmb.json
               stopList.ctb.json
               stopList.nwfb.json
               stopList.gmb.json
               stopList.nlb.json
               stopList.lr.json
+              stopList.lrtfeeder.json
               routeTime.json
               gtfs.json
               db.json
