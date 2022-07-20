@@ -61,7 +61,7 @@ for [route, bound, seq, stationId, lat, lng, name_zh, name_en] in stops:
   }
   
 
-with open('routeList.lrtfeeder.json', 'w') as f:
+with open('routeList.mtrbus.json', 'w') as f:
   f.write(json.dumps([route for route in routeList.values() if len(route['stops']) > 0], ensure_ascii=False))
-with open('stopList.lrtfeeder.json', 'w') as f:
+with open('stopList.mtrbus.json', 'w') as f:
   f.write(json.dumps(stopList, ensure_ascii=False))
