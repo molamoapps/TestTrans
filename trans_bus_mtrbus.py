@@ -60,6 +60,10 @@ for [route, bound, seq, stationId, lat, lng, name_zh, name_en] in stops:
     "routes": []
   }
   
+# flatten the routeList back to array
+routeList = [routeList[routeKey] for routeKey, route in routeList.items() if len(route['stops']) > 0]
+    
+    
 #loop stoplist to get contained routes
 for key, stopMod in stopList.items():
     tmpContainRoute = []
@@ -75,6 +79,7 @@ for key, stopMod in stopList.items():
 
     
 with open('routeList.mtrbus.json', 'w') as f:
-  f.write(json.dumps([route for route in routeList.values() if len(route['stops']) > 0], ensure_ascii=False))
+  f.write(json.dumps(routeList, ensure_ascii=False))
+#   f.write(json.dumps([route for route in routeList.values() if len(route['stops']) > 0], ensure_ascii=False))
 with open('stopList.mtrbus.json', 'w') as f:
   f.write(json.dumps(stopList, ensure_ascii=False))
