@@ -86,7 +86,7 @@ importRouteListJson('gmb')
 importRouteListJson('nlb')
 importRouteListJson('lr')
 importRouteListJson('mtrbus')
-
+importRouteListJson('mtr')
 
 #add gtfs
 gtfs = json.load(open('gtfs.json'))
