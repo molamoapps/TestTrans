@@ -58,8 +58,8 @@ def filterStops(route):
   return route
 
 # flatten the routeList back to array
-routeList = [routeList[routeKey] for routeKey, route in routeList.items() if len(route['stops']) > 0]
- 
+# routeList = [routeList[routeKey] for routeKey, route in routeList.items() if len(route['stops']) > 0]
+routeList = list(map(filterStops, [route for route in routeList.values() if len(route['stops']) > 0])) 
 
 with open('routeList.mtr.json', 'w') as f:
   f.write(json.dumps(routeList, ensure_ascii=False))
