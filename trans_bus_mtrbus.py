@@ -15,6 +15,8 @@ routes = [route for route in reader if len(route) == 4]
 for [route, chn, eng, circular] in routes:
   if route == '':
     continue;
+  if  len(chn.split('至')) < 2:
+    continue;
   start = {
     "zh": chn.split('至')[0],
     "en": eng.split(' to ')[0]
