@@ -9,14 +9,13 @@ routeList = {}
 stopList = {}
 
 r = requests.get('https://opendata.mtr.com.hk/data/mtr_bus_routes.csv')
+r.encoding = 'utf-8'
 reader = csv.reader(r.text.split("\n") )
 headers = next(reader,None)
 routes = [route for route in reader if len(route) == 4]
 for [route, chn, eng, circular] in routes:
   print ("info", chn.split('至'))
   if route == '':
-    continue;
-  if  len(chn.split('至')) < 2:
     continue;
   start = {
     "zh": chn.split('至')[0],
