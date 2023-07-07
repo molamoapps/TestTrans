@@ -13,7 +13,7 @@ reader = csv.reader(r.text.split("\n") )
 headers = next(reader,None)
 routes = [route for route in reader if len(route) == 4]
 for [route, chn, eng, circular] in routes:
-  print ("info", len(chn.split('至')))
+  print ("info", chn.split('至'))
   if route == '':
     continue;
   if  len(chn.split('至')) < 2:
